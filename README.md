@@ -109,7 +109,7 @@ Create a **mount_cifs.yml** file in your project directory:
 
     - name: Mount CIFS share
       become: yes
-      command: "mount -t cifs -o username={{ cifs_username }},password={{ cifs_password }},vers=2.0 //dc3-fic-wp1.domandpc.fr/Lecteurs/DIR/SSI/COMMUN/DEPOT/uploads /var/www/uploads"
+      command: "mount -t cifs -o username={{ cifs_username }},password={{ cifs_password }},vers=2.0 //windows.server.local/folder/to/share /var/example"
 ```
 
 ### 4.5 Run the Ansible playbook
