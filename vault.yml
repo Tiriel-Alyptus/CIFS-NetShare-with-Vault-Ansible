@@ -1,0 +1,3 @@
+plugin: community.hashi_vault.vault_read
+url: http://127.0.0.1:8200
+token: Vouspouvezrécupérerlejetondevaultlorsdel'installation

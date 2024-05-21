@@ -1,0 +1,23 @@
+---
+- name: Mount CIFS Share
+  hosts: localhost
+  tasks:
+    - name: Get CIFS credentials from Vault
+      community.hashi_vault.vault_read:
+        path: "secret/data/cifs"
+        url: "http://127.0.0.1:8200"
+        token: "<Root Token>"  # Replace with your actual Vault token
+      register: cifs_secrets
+
+    - name: Debug CIFS credentials
+      debug:
+        var: cifs_secrets
+
+    - name: Set CIFS credentials
+      set_fact:
+        cifs_username: "{{ cifs_secrets.data.data.username }}"
+        cifs_password: "{{ cifs_secrets.data.data.password }}"
+
+    - name: Mount CIFS share
+      become: yes
+      command: "mount -t cifs -o username={{ cifs_username }},password={{ cifs_password }},vers=2.0 //windows.server.local/folder/to/share /var/example"
