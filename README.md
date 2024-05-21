@@ -41,7 +41,7 @@ vault login <Root Token>
 
 Replace <Root Token> with the actual token provided when you started Vault in dev mode.
 
-# Step 2: Store CIFS credentials in Vault
+## Step 2: Store CIFS credentials in Vault
 
 ```sh
 vault kv put secret/cifs username=yourusername password=yourpassword
